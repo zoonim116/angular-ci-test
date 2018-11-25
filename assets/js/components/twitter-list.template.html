@@ -1,0 +1,55 @@
+<div class="row">
+    <div class="col-sm-7 mt-3">
+        <form class="form-inline">
+            <div class="form-group">
+                <label for="usernameFormControlInput">Username</label>
+                <input type="text" class="form-control ml-1" id="usernameFormControlInput" ng-model="username" placeholder="username">
+            </div>
+            <button type="button" class="btn btn-primary ml-2" ng-click="getTweets()">Show tweets</button>
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    <div ng-show="errors.length > 0" class="col-sm-6 mt-3">
+        <div class="alert alert-danger" role="alert" ng-repeat="error in errors">
+            {{error.message}}
+        </div>
+    </div>
+
+    <div class="card-columns mt-3" ng-show="tweets.length > 0">
+
+        <div class="card card-cascade wider" ng-repeat="tweet in tweets">
+
+            <!-- Card image -->
+            <div class="view view-cascade overlay">
+                <img  class="card-img-top" ng-src="{{tweet.user.profile_image_url}}" alt="Card image cap">
+            </div>
+
+            <!-- Card content -->
+            <div class="card-body card-body-cascade text-center">
+
+                <!-- Title -->
+                <h4 class="card-title"><strong>@{{ tweet.user.name }}</strong></h4>
+                <!-- Subtitle -->
+                <h5 class="blue-text pb-2"><strong>{{tweet.user.description}}</strong></h5>
+                <!-- Text -->
+                <p class="card-text">{{tweet.text}} </p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <nav aria-label="" ng-show="tweets.length > 0">
+        <ul class="pagination justify-content-end">
+            <li ng-class="offset > 0 ? 'page-item ' : 'page-item disabled' ">
+                <a class="page-link" href ng-click="previousTweets()" tabindex="-1">Previous </a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" ng-click="nextTweets()" href>Next</a>
+            </li>
+        </ul>
+    </nav>
+
+</div>

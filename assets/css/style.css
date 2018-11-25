@@ -1,0 +1,21 @@
+.card-img-top {
+    width: 15%;
+}
+
+.card-title {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+}
+
+.card-columns {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.card-columns > div.card {
+    width: 32%;
+    padding: 10px;
+    margin-bottom: 23px;
+}
